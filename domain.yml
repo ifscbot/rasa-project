@@ -1,0 +1,78 @@
+version: '3.1'
+intents:
+- atestado_matricula
+- atestado_matricula_digital
+- atestado_matricula_fisico
+- documento
+- nao_possui_conta
+- out_of_scope
+- possui_conta
+- requerer_documento
+- saudar
+- tipo_documento
+entities:
+- tipo_documento
+- documento
+- possui_conta
+actions:
+- action_processar_tipo_documento
+- utter_tipo_documento
+responses:
+  utter_saudar:
+  - text: Olá! Sou Ariana, secretária virtual do IFSC Câmpus Gaspar.
+  - text: Oi! Sou Ariana, secretária virtual do IFSC Câmpus Gaspar.
+  - text: E aí? Eu sou a Ariana, a secretária virtual do IFSC Câmpus Gaspar.
+  
+  utter_como_ajudar:
+  - text: Como posso te ajudar?
+  - text: Em que posso ajudar?
+  - text: O que posso fazer por você?
+  utter_possui_conta:
+  - text: Ótimo!
+  utter_criar_conta:
+  - text: Tudo bem. Já que ainda não tem login e senha do aluno, você precisa enviar um e-mail para a Secretaria (secretaria.gaspar@ifsc.edu.br) e solicitar uma nova senha. Ah, e para sua segurança, você também precisará de uma foto frente e verso do seu documento de identidade.
+  utter_tipo_documento:
+  - text: Ótimo! Você pode obter seu documento digitalmente ou fisicamente. Qual você prefere?
+  utter_documento:
+  - text: Ótimo! Qual documento você precisa?
+  utter_atestado_matricula:
+  - text: Ótimo! Você pode obter seu atestado de matrícula digitalmente ou fisicamente. Qual você prefere?
+  utter_atestado_matricula_digital:
+  - text: Beleza. Para obter seu atestado digital, você precisará de uma conta no SIGAA. Você possue uma conta no SIGAA?
+  utter_atestado_matricula_digital_logado:
+  - text: |
+      Certo. Para emitir o seu atestado digital a partir do SIGAA, siga os passos abaixo: - Primeiro acesse o SIGAA (https://sigaa.ifsc.edu.br) utilizando seu login e senha do aluno; Ao acessar o SIGAA, no menu, clique em "Ensino" e, em seguida, em “Atestado de matrícula”.
+      Então o seu atestado de matrícula será aberto em uma nova janela. Você pode imprimi-lo ou salvá-lo através do botão “imprimir” no final da página.
+  utter_atestado_matricula_fisico:
+  - text: Beleza. Para receber o documento impresso com carimbo e assinatura, você deve ir à secretaria do câmpus pessoalmente. O horário de atendimento é de segunda a sexta-feira, das 8h às 20h.
+  utter_ask_rephrase:
+  - text: Desculpe. Não consegui entender o seu pedido. Você poderia tentar de novo?
+  utter_default:
+  - text: Desculpe, não consigo te ajudar. Você poderia tentar de novo?
+slots:
+  documento:
+    type: categorical
+    influence_conversation: true
+    values:
+    - atestado_matricula
+    - atestado_frequencia
+    mappings:
+    - type: from_entity
+      entity: documento
+  tipo_documento:
+    type: categorical
+    influence_conversation: true
+    values:
+    - digital
+    - físico
+    mappings:
+    - type: from_entity
+      entity: tipo_documento
+  possui_conta:
+    type: bool
+    influence_conversation: true
+    mappings:
+    - type: custom
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

@@ -1,0 +1,61 @@
+version: "3.1"
+
+nlu:
+- intent: saudar
+  examples: |
+    - oi
+    - olá
+    - oie
+    - e aí?
+    - como vai?
+- intent: requerer_documento
+  examples: |
+    - [atestado de matricula](documento)
+    - preciso do [atestado de matricula](documento) [digital](tipo_documento)
+    - quero um [atestado de matricula](documento) [digital](tipo_documento)
+    - como consigo o [atestado de matricula](documento) [digital](tipo_documento)?
+    - preciso de um documento
+    - quero um documento
+    - quero um [atestado de matricula]{"entity": "documento", "value": "atestado_matricula"}
+    - [digital](tipo_documento)
+    - [físico](tipo_documento)
+    - [impresso](tipo_documento)
+    - [digital](tipo_documento)
+    - [atestado de matricula](documento)
+    - preciso de um [atestado de matricula](documento)
+    - Preciso de um [atestado de matrícula](documento)
+- intent: possui_conta
+  examples: |
+    - sim
+    - sim, tenho conta no SIGAA
+    - possuo conta no SIGAA
+    - possuo conta
+    - tenho cadastro
+    - Sim
+- intent: nao_possui_conta
+  examples: |
+    - não
+    - não tenho conta
+    - ainda nao tenho conta
+    - não possuo conta
+    - não tenho cadastro
+- intent: out_of_scope
+  examples: |
+    - Quero pedir comida
+    - O que é 2 + 2?
+    - Quero comprar um carro
+    
+- synonym: atestado_matricula
+  examples: |
+    - atestado de matricula
+    - documento de matricula
+    - certidao de matricula
+
+- synonym: atestado_frequencia
+  examples: |
+    - atestado de frequência
+    - documento de frequência
+    - certidao de frequência
+- synonym: fisico
+  examples: |
+    - impresso
