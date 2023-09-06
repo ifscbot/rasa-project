@@ -10,20 +10,29 @@ nlu:
     - como vai?
 - intent: requerer_documento
   examples: |
+    - [atestado de frequência](documento)
     - [atestado de matricula](documento)
     - preciso do [atestado de matricula](documento) [digital](tipo_documento)
     - quero um [atestado de matricula](documento) [digital](tipo_documento)
-    - como consigo o [atestado de matricula](documento) [digital](tipo_documento)?
+    - como consigo o [atestado de frequência](documento) [digital](tipo_documento)?
     - preciso de um documento
     - quero um documento
     - quero um [atestado de matricula]{"entity": "documento", "value": "atestado_matricula"}
+    - [atestado de matricula](documento)
+    - preciso de um [atestado de frequência](documento)
+    - Preciso de um [atestado de matrícula](documento)
+- intent: tipo_documento
+  examples: |
     - [digital](tipo_documento)
     - [físico](tipo_documento)
     - [impresso](tipo_documento)
-    - [digital](tipo_documento)
-    - [atestado de matricula](documento)
-    - preciso de um [atestado de matricula](documento)
-    - Preciso de um [atestado de matrícula](documento)
+- intent: cancelar_matricula
+  examples: |
+    - quero cancelar minha matrícula
+    - como cancelo matricula
+    - quero trancar o curso
+    - quero trancar a matricula
+    - quero trancar a matrícula
 - intent: possui_conta
   examples: |
     - sim
@@ -48,14 +57,21 @@ nlu:
 - synonym: atestado_matricula
   examples: |
     - atestado de matricula
+    - atestado de matrícula
     - documento de matricula
     - certidao de matricula
 
 - synonym: atestado_frequencia
   examples: |
+    - atestado de frequencia
     - atestado de frequência
     - documento de frequência
     - certidao de frequência
+
 - synonym: fisico
   examples: |
+    - fisica
+    - físico
+    - física
+    - impressa
     - impresso

@@ -8,7 +8,7 @@ stories:
       - documento: atestado_matricula
       - tipo_documento: digital
     - action: action_processar_tipo_documento
-    - action: utter_atestado_matricula_digital
+    - action: utter_como_ajudar_mais
 
   - story: Gerar atestado 4
     steps:
@@ -17,7 +17,7 @@ stories:
       - documento: atestado_frequencia
       - tipo_documento: digital
     - action: action_processar_tipo_documento
-    - action: utter_atestado_matricula_digital
+    - action: utter_como_ajudar_mais
 
   - story: Gerar atestado 5
     steps:
@@ -26,31 +26,42 @@ stories:
       - documento: atestado_frequencia
       - tipo_documento: fisico
     - action: action_processar_tipo_documento
-    - action: utter_atestado_matricula_digital
+    - action: utter_como_ajudar_mais
   
   - story: Gerar atestado 2
     steps:
     - intent: requerer_documento
     - slot_was_set:
       - documento: atestado_matricula
-      - tipo_documento: null
+      - tipo_documento: None
     - action: utter_tipo_documento
-    - intent: requerer_documento
+    - intent: tipo_documento
     - slot_was_set:
       - tipo_documento: digital
     - action: action_processar_tipo_documento
+    - action: utter_como_ajudar_mais
   
   - story: Gerar atestado 3
     steps:
     - intent: requerer_documento
     - slot_was_set:
       - tipo_documento: digital
-      - documento: null
+      - documento: None
     - action: utter_documento
-    - intent: requerer_documento
+    - intent: tipo_documento
     - slot_was_set:
       - documento: atestado_matricula
     - action: action_processar_tipo_documento
+    - action: utter_como_ajudar_mais
+  
+  - story: Cancelar matrícula
+    steps:
+    - intent: cancelar_matricula
+    - action: utter_cancelar_matricula
+    - action: utter_cancelar_matricula_passos_1
+    - action: utter_cancelar_matricula_passos_2
+    - action: utter_cancelar_matricula_passos_3
+    - action: utter_como_ajudar_mais
 # - story: Gerar atestado de matrícula digital com conta
 #   steps:
 #   - intent: atestado_matricula
