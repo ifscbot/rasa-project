@@ -27,9 +27,9 @@ entities:
 
 actions:
 - action_processar_horario_campus
-- utter_como_ajudar_mais
 - action_enviar_requerer_documento
 - action_enviar_chegada_tardia
+- validate_chegada_tardia_form
 
 responses:
   utter_saudar:
@@ -61,10 +61,15 @@ responses:
   - text: Desculpe. Não consegui entender o seu pedido. Você poderia tentar de novo?
   utter_default:
   - text: Desculpe, não consigo te ajudar. Você poderia tentar de novo?
+  utter_chegada_tardia:
+  - text: Vixe. Tente evitar atrasos, ok? Mas, se você chegou atrasado, você pode validar sua chegada tardia para um professor. Para isso, preciso de algumas informações. Vamos lá?
+  - text: Você pode validar sua chegada tardia para um professor. Para isso, irei precisar de algumas informações.
   utter_ask_nome:
   - text: Qual o seu nome?
   utter_ask_turma:
   - text: Qual a sua turma?
+  utter_requerer_documento:
+  - text: Posso ajudar com isso!
   utter_ask_documento:
   - text: Qual documento você precisa?
   utter_ask_tipo_documento:
@@ -104,7 +109,7 @@ slots:
     mappings:
     - type: from_entity
       entity: turma
-      
+
 forms:
   requerer_documento:
     required_slots:

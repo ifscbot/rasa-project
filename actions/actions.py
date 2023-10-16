@@ -11,7 +11,7 @@ import datetime
 import re
 from typing import Any, Text, Dict, List
 
-from rasa_sdk import Action, Tracker
+from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 
@@ -19,6 +19,7 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
+from rasa_sdk.types import DomainDict
 
 class ActionProcessarHorarioCampus(Action):
 
@@ -104,7 +105,27 @@ class ActionEnviarChegadaTardia(Action):
         nome = tracker.get_slot("nome")
         print("Nome: " + nome)
         
-        turma = tracker.get_slot("turma").lower()
+        turma = tracker.get_slot("turma")
+        print("Turma: " + turma)
+
+        horario = datetime.datetime.now().strftime("%H:%M")
+
+        dispatcher.utter_message(text=f"Ótimo. Registrei uma chegada tardia em nome de {nome} da turma {turma} às {horario}.")
+
+        return []
+
+class ValidateChegadaTardiaForm(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_chegada_tardia_form"
+
+    def validate_turma(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        turma = slot_value.lower()
         turma = turma.replace("informática", "I")
         turma = turma.replace("informatica", "I")
         turma = turma.replace("química", "Q")
@@ -113,9 +134,6 @@ class ActionEnviarChegadaTardia(Action):
 
         if not bool(re.search(r"[IQ][1-6]", turma)):
             dispatcher.utter_message(text=f"Desculpe, não consegui entender a sua turma. Você poderia tentar de novo?")
-            return []
+            return {"turma": None}
 
-        print("Turma: " + turma)
-        dispatcher.utter_message(text=f"Ótimo. Registrei no sistema uma chegada tardia em nome de {nome} da turma {turma}.")
-
-        return []
+        return {"turma": turma}

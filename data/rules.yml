@@ -21,6 +21,7 @@ rules:
 - rule: Ativar requerer documento
   steps:
   - intent: requerer_documento
+  - action: utter_requerer_documento
   - action: requerer_documento
   - active_loop: requerer_documento
 
@@ -33,10 +34,12 @@ rules:
   - slot_was_set:
     - requested_slot: null
   - action: action_enviar_requerer_documento
+  - action: utter_como_ajudar_mais
 
 - rule: Ativar chegada tardia
   steps:
   - intent: chegada_tardia
+  - action: utter_chegada_tardia
   - action: chegada_tardia
   - active_loop: chegada_tardia
 
@@ -49,3 +52,4 @@ rules:
   - slot_was_set:
     - requested_slot: null
   - action: action_enviar_chegada_tardia
+  - action: utter_como_ajudar_mais
