@@ -1,58 +1,69 @@
 version: "3.1"
 
 stories:
-  - story: Gerar atestado
+  - story: Perguntar localização do campus
     steps:
-    - intent: requerer_documento
-    - slot_was_set:
-      - documento: atestado_matricula
-      - tipo_documento: digital
-    - action: action_processar_tipo_documento
+    - intent: localizacao_campus
+    - action: utter_localizacao_campus
     - action: utter_como_ajudar_mais
 
-  - story: Gerar atestado 4
+  - story: Perguntar horários do campus
     steps:
-    - intent: requerer_documento
-    - slot_was_set:
-      - documento: atestado_frequencia
-      - tipo_documento: digital
-    - action: action_processar_tipo_documento
+    - intent: horario_campus
+    - action: action_processar_horario_campus
     - action: utter_como_ajudar_mais
+  # - story: Gerar atestado
+  #   steps:
+  #   - intent: requerer_documento
+  #   - slot_was_set:
+  #     - documento: atestado_matricula
+  #     - tipo_documento: digital
+  #   - action: action_processar_tipo_documento
+  #   - action: utter_como_ajudar_mais
 
-  - story: Gerar atestado 5
-    steps:
-    - intent: requerer_documento
-    - slot_was_set:
-      - documento: atestado_frequencia
-      - tipo_documento: fisico
-    - action: action_processar_tipo_documento
-    - action: utter_como_ajudar_mais
+  # - story: Gerar atestado 4
+  #   steps:
+  #   - intent: requerer_documento
+  #   - slot_was_set:
+  #     - documento: atestado_frequencia
+  #     - tipo_documento: digital
+  #   - action: action_processar_tipo_documento
+  #   - action: utter_como_ajudar_mais
+
+  # - story: Gerar atestado 5
+  #   steps:
+  #   - intent: requerer_documento
+  #   - slot_was_set:
+  #     - documento: atestado_frequencia
+  #     - tipo_documento: fisico
+  #   - action: action_processar_tipo_documento
+  #   - action: utter_como_ajudar_mais
   
-  - story: Gerar atestado 2
-    steps:
-    - intent: requerer_documento
-    - slot_was_set:
-      - documento: atestado_matricula
-      - tipo_documento: None
-    - action: utter_tipo_documento
-    - intent: tipo_documento
-    - slot_was_set:
-      - tipo_documento: digital
-    - action: action_processar_tipo_documento
-    - action: utter_como_ajudar_mais
+  # - story: Gerar atestado 2
+  #   steps:
+  #   - intent: requerer_documento
+  #   - slot_was_set:
+  #     - documento: atestado_matricula
+  #     - tipo_documento: None
+  #   - action: utter_tipo_documento
+  #   - intent: tipo_documento
+  #   - slot_was_set:
+  #     - tipo_documento: digital
+  #   - action: action_processar_tipo_documento
+  #   - action: utter_como_ajudar_mais
   
-  - story: Gerar atestado 3
-    steps:
-    - intent: requerer_documento
-    - slot_was_set:
-      - tipo_documento: digital
-      - documento: None
-    - action: utter_documento
-    - intent: tipo_documento
-    - slot_was_set:
-      - documento: atestado_matricula
-    - action: action_processar_tipo_documento
-    - action: utter_como_ajudar_mais
+  # - story: Gerar atestado 3
+  #   steps:
+  #   - intent: requerer_documento
+  #   - slot_was_set:
+  #     - tipo_documento: digital
+  #     - documento: None
+  #   - action: utter_documento
+  #   - intent: tipo_documento
+  #   - slot_was_set:
+  #     - documento: atestado_matricula
+  #   - action: action_processar_tipo_documento
+  #   - action: utter_como_ajudar_mais
   
   - story: Cancelar matrícula
     steps:
@@ -62,93 +73,3 @@ stories:
     - action: utter_cancelar_matricula_passos_2
     - action: utter_cancelar_matricula_passos_3
     - action: utter_como_ajudar_mais
-# - story: Gerar atestado de matrícula digital com conta
-#   steps:
-#   - intent: atestado_matricula
-#   - action: utter_atestado_matricula
-#   - intent: atestado_matricula_digital
-#   - slot_was_set:
-#     - logado: True
-#   - action: utter_atestado_matricula_digital_logado
-
-# - story: Gerar atestado de matrícula digital com conta
-#   steps:
-#   - intent: atestado_matricula_digital
-#   - slot_was_set:
-#     - logado: True
-#   - action: utter_atestado_matricula_digital_logado
-
-# - story: Gerar atestado de matrícula digital sem conta
-#   steps:
-#   - intent: atestado_matricula
-#   - action: utter_atestado_matricula
-#   - intent: atestado_matricula_digital
-#   - slot_was_set:
-#     - logado: False
-#   - action: utter_criar_conta
-
-# - story: Gerar atestado de matrícula digital sem conta
-#   steps:
-#   - intent: atestado_matricula_digital
-#   - slot_was_set:
-#     - logado: False
-#   - action: utter_criar_conta
-
-# - story: Gerar atestado de matrícula digital sem conta
-#   steps:
-#   - intent: atestado_matricula
-#   - action: utter_atestado_matricula
-#   - intent: atestado_matricula_digital
-#   - slot_was_set:
-#     - logado: null
-#   - action: utter_atestado_matricula_digital
-#   - intent: possui_conta
-#   - action: action_set_logado
-#   - action: utter_atestado_matricula_digital_logado
-
-# - story: Gerar atestado de matrícula digital sem conta
-#   steps:
-#   - intent: atestado_matricula
-#   - action: utter_atestado_matricula
-#   - intent: atestado_matricula_digital
-#   - slot_was_set:
-#     - logado: null
-#   - action: utter_atestado_matricula_digital
-#   - intent: nao_possui_conta
-#   - action: action_set_logado_false
-#   - action: utter_atestado_matricula_digital_logado
-
-# - story: Gerar atestado de matrícula físico
-#   steps:
-#   - intent: atestado_matricula
-#   - action: utter_atestado_matricula
-#   - intent: atestado_matricula_fisico
-#   - action: utter_atestado_matricula_fisico
-
-# - story: Informar que possui conta
-#   steps:
-#   - intent: possui_conta
-#   - action: action_set_logado
-#   - action: utter_possui_conta
-
-# - story: Informar que não possui conta
-#   steps:
-#   - checkpoint: checar_conta
-#   - intent: nao_possui_conta
-#   - action: action_set_logado_false
-#   - action: utter_criar_conta
-
-  - story: interactive_story_2
-    steps:
-    - intent: requerer_documento
-      entities:
-      - documento: atestado_matricula
-    - slot_was_set:
-      - documento: atestado_matricula
-    - action: utter_tipo_documento
-    - intent: tipo_documento
-      entities:
-      - tipo_documento: digital
-    - slot_was_set:
-      - tipo_documento: digital
-    - action: action_processar_tipo_documento

@@ -1,5 +1,4 @@
 version: "3.1"
-
 nlu:
 - intent: saudar
   examples: |
@@ -8,6 +7,24 @@ nlu:
     - oie
     - e aí?
     - como vai?
+- intent: localizacao_campus
+  examples: |
+    - onde fica o campus?
+    - onde fica o IFSC?
+    - onde fica o IFSC Gaspar?
+    - onde fica o IFSC Campus Gaspar?
+    - onde fica o IFSC Câmpus Gaspar?
+- intent: horarios_campus
+  examples: |
+    - qual o horário de funcionamento do campus?
+    - qual o horário de funcionamento do IFSC?
+    - qual o horário de funcionamento do IFSC Gaspar?
+    - qual o horário de funcionamento do IFSC Campus Gaspar?
+    - qual o horário de funcionamento do IFSC Câmpus Gaspar?
+    - o campus está aberto?
+    - quando abre o campus?
+    - quando fecha o campus?
+    - qual o horário do campus?
 - intent: requerer_documento
   examples: |
     - [atestado de frequência](documento)
@@ -15,17 +32,19 @@ nlu:
     - preciso do [atestado de matricula](documento) [digital](tipo_documento)
     - quero um [atestado de matricula](documento) [digital](tipo_documento)
     - como consigo o [atestado de frequência](documento) [digital](tipo_documento)?
+    - quero um comprovante que estou matriculado no IFSC
     - preciso de um documento
     - quero um documento
     - quero um [atestado de matricula]{"entity": "documento", "value": "atestado_matricula"}
-    - [atestado de matricula](documento)
     - preciso de um [atestado de frequência](documento)
     - Preciso de um [atestado de matrícula](documento)
-- intent: tipo_documento
+- intent: informar_requerer_documento
   examples: |
     - [digital](tipo_documento)
     - [físico](tipo_documento)
     - [impresso](tipo_documento)
+    - preciso de um [atestado de frequência](documento)
+    - Preciso de um [atestado de matrícula](documento)
 - intent: cancelar_matricula
   examples: |
     - quero cancelar minha matrícula
@@ -53,6 +72,32 @@ nlu:
     - Quero pedir comida
     - O que é 2 + 2?
     - Quero comprar um carro
+- intent: chegada_tardia
+  examples: |
+    - cheguei atrasado
+    - cheguei atrasada
+    - cheguei atrasado na aula
+    - cheguei atrasada na aula
+    - cheguei atrasado e preciso do papel para justificar
+    - cheguei atrasada e preciso do papel para justificar
+- intent: informar_chegada_tardia
+  examples: |
+    - meu nome é [João Gabriel](nome)
+    - [João Gabriel](nome)
+    - me chamo [Clara](nome)
+    - estudo no [I6](turma)
+    - [I1](turma)
+    - [I3](turma)
+    - [I6](turma)
+    - [Q1](turma)
+    - [Q3](turma)
+    - [Q6](turma)
+    - [Informática 1](turma)
+    - [Informática 3](turma)
+    - [Informática 6](turma)
+    - [Química 1](turma)
+    - [Química 3](turma)
+    - [Química 6](turma)
     
 - synonym: atestado_matricula
   examples: |
@@ -67,7 +112,9 @@ nlu:
     - atestado de frequência
     - documento de frequência
     - certidao de frequência
-
+- synonym: digital
+  examples: |
+    - digitalmente
 - synonym: fisico
   examples: |
     - fisica
