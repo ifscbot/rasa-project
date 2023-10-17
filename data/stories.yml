@@ -6,64 +6,37 @@ stories:
     - intent: localizacao_campus
     - action: utter_localizacao_campus
     - action: utter_como_ajudar_mais
+  
+  - story: Perguntar localização do campus
+    steps:
+    - intent: saudar
+    - action: utter_saudar
+    - intent: localizacao_campus
+    - action: utter_localizacao_campus
+    - action: utter_como_ajudar_mais
+  
+  - story: Perguntar localização e horários do campus
+    steps:
+    - intent: localizacao_campus
+    - action: utter_localizacao_campus
+    - action: utter_como_ajudar_mais
+    - intent: horario_campus
+    - action: action_processar_horario_campus
+    - action: utter_como_ajudar_mais
 
   - story: Perguntar horários do campus
     steps:
     - intent: horario_campus
     - action: action_processar_horario_campus
     - action: utter_como_ajudar_mais
-  # - story: Gerar atestado
-  #   steps:
-  #   - intent: requerer_documento
-  #   - slot_was_set:
-  #     - documento: atestado_matricula
-  #     - tipo_documento: digital
-  #   - action: action_processar_tipo_documento
-  #   - action: utter_como_ajudar_mais
-
-  # - story: Gerar atestado 4
-  #   steps:
-  #   - intent: requerer_documento
-  #   - slot_was_set:
-  #     - documento: atestado_frequencia
-  #     - tipo_documento: digital
-  #   - action: action_processar_tipo_documento
-  #   - action: utter_como_ajudar_mais
-
-  # - story: Gerar atestado 5
-  #   steps:
-  #   - intent: requerer_documento
-  #   - slot_was_set:
-  #     - documento: atestado_frequencia
-  #     - tipo_documento: fisico
-  #   - action: action_processar_tipo_documento
-  #   - action: utter_como_ajudar_mais
   
-  # - story: Gerar atestado 2
-  #   steps:
-  #   - intent: requerer_documento
-  #   - slot_was_set:
-  #     - documento: atestado_matricula
-  #     - tipo_documento: None
-  #   - action: utter_tipo_documento
-  #   - intent: tipo_documento
-  #   - slot_was_set:
-  #     - tipo_documento: digital
-  #   - action: action_processar_tipo_documento
-  #   - action: utter_como_ajudar_mais
-  
-  # - story: Gerar atestado 3
-  #   steps:
-  #   - intent: requerer_documento
-  #   - slot_was_set:
-  #     - tipo_documento: digital
-  #     - documento: None
-  #   - action: utter_documento
-  #   - intent: tipo_documento
-  #   - slot_was_set:
-  #     - documento: atestado_matricula
-  #   - action: action_processar_tipo_documento
-  #   - action: utter_como_ajudar_mais
+  - story: Perguntar horários do campus
+    steps:
+    - intent: saudar
+    - action: utter_saudar
+    - intent: horario_campus
+    - action: action_processar_horario_campus
+    - action: utter_como_ajudar_mais
   
   - story: Cancelar matrícula
     steps:
