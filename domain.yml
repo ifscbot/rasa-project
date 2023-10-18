@@ -14,6 +14,7 @@ intents:
 - nao_possui_conta
 - out_of_scope
 - possui_conta
+- nao_ajudar
 - requerer_documento
 - saudar
 - tipo_documento
@@ -36,13 +37,13 @@ actions:
 
 responses:
   utter_saudar:
-  - text: Olá! Sou Ariana, secretária virtual do IFSC Câmpus Gaspar.
-  - text: Oi! Sou Ariana, secretária virtual do IFSC Câmpus Gaspar.
-  - text: E aí? Eu sou a Ariana, a secretária virtual do IFSC Câmpus Gaspar.
+  - text: Olá! Sou o chatbot do IFSC Câmpus Gaspar.
+  - text: Oi! Sou o chatbot do IFSC Câmpus Gaspar.
+  - text: E aí? Eu sou o chatbot do IFSC Câmpus Gaspar.
   utter_localizacao_campus:
   - text: O IFSC Câmpus Gaspar fica na Rua Adriano Kormann, 510, no bairro Bela Vista, em Gaspar, Santa Catarina. O telefone para contato é (47) 3318-3700.
   utter_site_campus:
-  - text: O site do IFSC Câmpus Gaspar fica em https://www.ifsc.edu.br/web/campus-gaspar. Caso você queira saber mais sobre o IFSC, acesse https://www.ifsc.edu.br/.
+  - text: O site do IFSC Câmpus Gaspar é https://www.ifsc.edu.br/web/campus-gaspar. Caso você queira saber mais sobre o IFSC, acesse https://www.ifsc.edu.br/.
   utter_como_ajudar:
   - text: Como posso te ajudar?
   - text: Em que posso ajudar?
@@ -50,6 +51,8 @@ responses:
   utter_como_ajudar_mais:
   - text: Há algo mais em que posso te ajudar?
   - text: Posso lhe ajudar com algo mais?
+  utter_nao_ajudar:
+  - text: Tudo bem. Estarei aqui caso você precise de algo.
   utter_possui_conta:
   - text: Ótimo!
   utter_criar_conta:
@@ -68,7 +71,6 @@ responses:
   - text: Desculpe, não consigo te ajudar. Você poderia tentar de novo?
   utter_chegada_tardia:
   - text: Vixe. Tente evitar atrasos, ok? Mas, se você chegou atrasado, você pode validar sua chegada tardia para um professor. Para isso, preciso de algumas informações. Vamos lá?
-  - text: Você pode validar sua chegada tardia para um professor. Para isso, irei precisar de algumas informações.
   utter_ask_nome:
   - text: Qual o seu nome?
   utter_ask_turma:

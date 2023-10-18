@@ -7,6 +7,12 @@ stories:
     - action: utter_saudar
     - action: utter_como_ajudar
   
+  - story: Não ajudar
+    steps:
+    - action: utter_como_ajudar
+    - intent: nao_ajudar
+    - action: utter_nao_ajudar
+  
   - story: Perguntar localização do campus
     steps:
     - intent: localizacao_campus
@@ -54,3 +60,5 @@ stories:
     - action: utter_cancelar_matricula_passos_2
     - action: utter_cancelar_matricula_passos_3
     - action: utter_como_ajudar_mais
+    - intent: out_of_scope
+    - action: utter_default

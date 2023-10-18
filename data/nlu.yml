@@ -100,20 +100,29 @@ nlu:
     - cheguei atrasada e preciso do papel para justificar
     - cheguei atrasado e sou do [I6](turma)
     - cheguei atrasado e me chamo [João Gabriel](nome)
+- intent: nao_ajudar
+  examples: |
+    - não precisa
+    - não obrigado
+    - tudo certo por aqui
+    - não quero nada
 - intent: informar_chegada_tardia
   examples: |
     - meu nome é [João Gabriel](nome)
     - [João Gabriel](nome)
+    - [Andrei](nome)
+    - [Nicolas](nome)
     - [Carlos](nome)
     - [Rafaela](nome)
+    - [Luna](nome)
     - me chamo [Clara](nome)
     - estudo no [I6](turma)
     - [I1](turma)
     - [I3](turma)
-    - [I6](turma)
+    - [I5](turma)
     - [Q1](turma)
     - [Q3](turma)
-    - [Q6](turma)
+    - [Q5](turma)
     - [Informática 1](turma)
     - [Informática 3](turma)
     - [Informática 6](turma)
@@ -121,7 +130,7 @@ nlu:
     - [Info 2](turma)
     - [Info 4](turma)
     - [Química 1](turma)
-    - [Química 3](turma)
+    - [Química 2](turma)
     - [Química 6](turma)
 - synonym: atestado_matricula
   examples: |

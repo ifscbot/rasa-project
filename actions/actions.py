@@ -73,9 +73,9 @@ class ActionEnviarRequererDocumento(Action):
         print("Tipo de documento: " + tipo_documento)
         
         if documento == "atestado_matricula":
-            documento = "Atestado de matrícula"
+            documento = "atestado de matrícula"
         elif documento == "atestado_frequencia":
-            documento = "Atestado de frequência"
+            documento = "atestado de frequência"
         else:
             dispatcher.utter_message(text=f"Desculpe, não consegui entender que tipo de documento você quer. Você poderia tentar de novo?")
             return
@@ -116,13 +116,23 @@ class ActionEnviarChegadaTardia(Action):
         
         nome = tracker.get_slot("nome")
         print("Nome: " + nome)
+
+        turma = tracker.get_slot("turma").lower()
+        turma = turma.replace("informática", "I")
+        turma = turma.replace("informatica", "I")
+        turma = turma.replace("química", "Q")
+        turma = turma.replace("quimica", "Q")
+        turma = turma.replace(" ", "").upper()
+
+        if not bool(re.search(r"[IQ][1-6]", turma)):
+            dispatcher.utter_message(text=f"Desculpe, não consegui entender a sua turma. Você poderia tentar de novo?")
+            return [SlotSet("turma", None)]
         
-        turma = tracker.get_slot("turma")
         print("Turma: " + turma)
 
         horario = datetime.datetime.now().strftime("%H:%M")
 
-        dispatcher.utter_message(text=f"Ótimo. Registrei uma chegada tardia em nome de {nome} da turma {turma} às {horario}.")
+        dispatcher.utter_message(text=f"Ótimo. Registrei uma chegada tardia em nome de {nome} da turma {turma} às {horario}. Certifique-se de retirar o comprovante na secretaria.")
 
         return []
 
@@ -138,14 +148,14 @@ class ValidateChegadaTardiaForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         turma = slot_value.lower()
-        turma = turma.replace("informática", "I")
-        turma = turma.replace("informatica", "I")
-        turma = turma.replace("química", "Q")
-        turma = turma.replace("quimica", "Q")
-        turma = turma.replace(" ", "").upper()
+        # turma = turma.replace("informática", "I")
+        # turma = turma.replace("informatica", "I")
+        # turma = turma.replace("química", "Q")
+        # turma = turma.replace("quimica", "Q")
+        # turma = turma.replace(" ", "").upper()
 
-        if not bool(re.search(r"[IQ][1-6]", turma)):
-            dispatcher.utter_message(text=f"Desculpe, não consegui entender a sua turma. Você poderia tentar de novo?")
-            return {"turma": None}
+        # if not bool(re.search(r"[IQ][1-6]", turma)):
+        #     dispatcher.utter_message(text=f"Desculpe, não consegui entender a sua turma. Você poderia tentar de novo?")
+        #     return {"turma": None}
 
         return {"turma": turma}
