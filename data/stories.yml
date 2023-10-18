@@ -7,6 +7,14 @@ stories:
     - action: utter_saudar
     - action: utter_como_ajudar
   
+  - story: Testando
+    steps:
+    - intent: saudar
+    - action: utter_saudar
+    - action: utter_como_ajudar
+    - intent: testando
+    - action: utter_testando
+  
   - story: Não ajudar
     steps:
     - action: utter_como_ajudar

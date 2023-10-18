@@ -20,6 +20,7 @@ intents:
 - tipo_documento
 - contar_piada
 - site_campus
+- testando
 
 entities:
 - tipo_documento
@@ -44,6 +45,8 @@ responses:
   - text: O IFSC Câmpus Gaspar fica na Rua Adriano Kormann, 510, no bairro Bela Vista, em Gaspar, Santa Catarina. O telefone para contato é (47) 3318-3700.
   utter_site_campus:
   - text: O site do IFSC Câmpus Gaspar é https://www.ifsc.edu.br/web/campus-gaspar. Caso você queira saber mais sobre o IFSC, acesse https://www.ifsc.edu.br/.
+  utter_testando:
+  - text: Testando, 123... tem alguém aí?
   utter_como_ajudar:
   - text: Como posso te ajudar?
   - text: Em que posso ajudar?

@@ -7,6 +7,13 @@ nlu:
     - oie
     - e aí?
     - como vai?
+- intent: testando
+  examples: |
+    - testando
+    - teste
+    - teste teste
+    - teste 1 2 3
+    - teste 123
 - intent: localizacao_campus
   examples: |
     - onde fica o campus?
