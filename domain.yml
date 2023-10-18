@@ -7,7 +7,6 @@ intents:
 - chegada_tardia
 - documento
 - horario_campus
-- horarios_campus
 - informar_chegada_tardia
 - informar_requerer_documento
 - localizacao_campus
@@ -90,7 +89,7 @@ responses:
   - text: "O que um pontinho vermelho está procurando em Gaspar?\nNove quadrados verdes. 🔴🟩"
   - text: "O que o IFSC e o espaço têm em comum?\nAmbos estão cheios de estrelas. ⭐️"
   - text: "Como que estudantes de informática se despedem?\n Com bye-bye-bytes. 👋"
-  - text: "O que é um terapeuta?\n1.024 gigapeutas"
+  - text: "O que é um terapeuta?\n1.024 gigapeutas."
   - text: "int x=10; int y=10; return x+y; // Qual o nome do filme?\nO Código dá Vinte"
   - text: "O que um álcool disse para o outro?\nEtanóis! 👋"
   - text: "Beleza. Vou contar uma piada sobre potássio.\n...\nKKKKKKKKKKKKK"

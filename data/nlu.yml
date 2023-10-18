@@ -36,7 +36,7 @@ nlu:
     - conte uma piada por favor
     - inventa uma piada
     - piada
-- intent: horarios_campus
+- intent: horario_campus
   examples: |
     - qual o horário de funcionamento do campus?
     - qual o horário de funcionamento do IFSC?
@@ -121,6 +121,7 @@ nlu:
     - [Nicolas](nome)
     - [Carlos](nome)
     - [Rafaela](nome)
+    - [Benjamin](nome)
     - [Luna](nome)
     - me chamo [Clara](nome)
     - estudo no [I6](turma)
@@ -160,6 +161,7 @@ nlu:
 - synonym: digital
   examples: |
     - digitalmente
+    - online
 - synonym: fisico
   examples: |
     - em papel
