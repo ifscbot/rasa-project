@@ -17,6 +17,8 @@ intents:
 - requerer_documento
 - saudar
 - tipo_documento
+- contar_piada
+- site_campus
 
 entities:
 - tipo_documento
@@ -30,6 +32,7 @@ actions:
 - action_enviar_requerer_documento
 - action_enviar_chegada_tardia
 - validate_chegada_tardia_form
+- validate_requerer_documento_form
 
 responses:
   utter_saudar:
@@ -38,6 +41,8 @@ responses:
   - text: E aí? Eu sou a Ariana, a secretária virtual do IFSC Câmpus Gaspar.
   utter_localizacao_campus:
   - text: O IFSC Câmpus Gaspar fica na Rua Adriano Kormann, 510, no bairro Bela Vista, em Gaspar, Santa Catarina. O telefone para contato é (47) 3318-3700.
+  utter_site_campus:
+  - text: O site do IFSC Câmpus Gaspar fica em https://www.ifsc.edu.br/web/campus-gaspar. Caso você queira saber mais sobre o IFSC, acesse https://www.ifsc.edu.br/.
   utter_como_ajudar:
   - text: Como posso te ajudar?
   - text: Em que posso ajudar?
@@ -52,9 +57,9 @@ responses:
   utter_cancelar_matricula:
   - text: 'Entendido! O cancelamento de matrícula deve ser feito em algumas etapas:'
   utter_cancelar_matricula_passos_1:
-  - text: Primeiramente, faça o download do requerimento disponível no link (https://www.ifsc.edu.br/documents/35973/2018778/Cancelamento+Trancamento+e+Transfer%C3%AAncia+Externa.pdf/d5f9a6c2-0e30-4f19-a6a8-a238ec028caf) e preencha-o.
+  - text: Primeiramente, faça o download do requerimento disponível no [link](https://www.ifsc.edu.br/documents/35973/2018778/Cancelamento+Trancamento+e+Transfer%C3%AAncia+Externa.pdf/d5f9a6c2-0e30-4f19-a6a8-a238ec028caf) e preencha-o.
   utter_cancelar_matricula_passos_2:
-  - text: Então, digitalize o requerimento e envie para a secretaria do IFSC Campus Gaspar em secretaria.gaspar@ifsc.edu.br junto de um documento de identificação. Caso o aluno seja menor de idade, no requerimento deve constar também a assinatura e documento do responsável. Caso necesário, o requerimento pode ser retirado impresso na secretaria do IFSC Campus Gaspar.
+  - text: Então, digitalize o requerimento e envie para a secretaria do IFSC Campus Gaspar em [secretaria.gaspar@ifsc.edu.br](mailto:secretaria.gaspar@ifsc.edu.br) junto de um documento de identificação. Caso o aluno seja menor de idade, no requerimento deve constar também a assinatura e documento do responsável. Caso necesário, o requerimento pode ser retirado impresso na secretaria do IFSC Campus Gaspar.
   utter_cancelar_matricula_passos_3:
   - text: Por fim, o documento passará por tramitação da Biblioteca Acadêmica e da Coordenadoria de Curso para análise. O aluno será informado por e-mail sobre o andamento e o resultado da análise.
   utter_ask_rephrase:
@@ -71,14 +76,25 @@ responses:
   utter_requerer_documento:
   - text: Posso ajudar com isso!
   utter_ask_documento:
-  - text: Qual documento você precisa?
+  - text: Qual documento você precisa? (Atestado de matrícula ou atestado de frequência)
   utter_ask_tipo_documento:
   - text: Você pode obter seu documento digitalmente ou fisicamente. Qual você prefere?
+  utter_ask_possui_conta:
+  - text: Você já possui uma conta no SIGAA?
+  utter_contar_piada:
+  - text: "O que um pontinho vermelho está procurando em Gaspar?\nNove quadrados verdes. 🔴🟩"
+  - text: "O que o IFSC e o espaço têm em comum?\nAmbos estão cheios de estrelas. ⭐️"
+  - text: "Como que estudantes de informática se despedem?\n Com bye-bye-bytes. 👋"
+  - text: "O que é um terapeuta?\n1.024 gigapeutas"
+  - text: "int x=10; int y=10; return x+y; // Qual o nome do filme?\nO Código dá Vinte"
+  - text: "O que um álcool disse para o outro?\nEtanóis! 👋"
+  - text: "Beleza. Vou contar uma piada sobre potássio.\n...\nKKKKKKKKKKKKK"
+  - text: "Sabe o que um cromossomo falou para o outro?\nCromossomos felizes!"
+  - text: "Um buraco negro é um tunel no fim da luz."
 
 slots:
   documento:
     type: categorical
-    influence_conversation: true
     values:
     - atestado_matricula
     - atestado_frequencia
@@ -87,7 +103,6 @@ slots:
       entity: documento
   tipo_documento:
     type: categorical
-    influence_conversation: true
     values:
     - digital
     - físico
@@ -96,9 +111,13 @@ slots:
       entity: tipo_documento
   possui_conta:
     type: bool
-    influence_conversation: true
     mappings:
-    - type: custom
+    - type: from_intent
+      value: true
+      intent: possui_conta
+    - type: from_intent
+      value: true
+      intent: nao_possui_conta
   nome:
     type: text
     mappings:

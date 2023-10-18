@@ -53,3 +53,8 @@ rules:
     - requested_slot: null
   - action: action_enviar_chegada_tardia
   - action: utter_como_ajudar_mais
+
+- rule: Contar piada
+  steps:
+  - intent: contar_piada
+  - action: utter_contar_piada

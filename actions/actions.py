@@ -73,25 +73,50 @@ class ActionEnviarRequererDocumento(Action):
 
         tipo_documento = tracker.get_slot("tipo_documento")
         print("Tipo de documento: " + tipo_documento)
-
-        nome_documento = ""
-
-        if documento == "atestado_matricula":
-            nome_documento = "Atestado de matrícula"
-        elif documento == "atestado_frequencia":
-            nome_documento = "Atestado de frequência"
-        else:
-            dispatcher.utter_message(text=f"Desculpe, não consegui entender que tipo de documento você quer. Você poderia tentar de novo?")
-            return []
         
         if tipo_documento == "digital":
-            dispatcher.utter_message(text=f"Certo. Para emitir o seu {nome_documento} a partir do SIGAA, siga os passos abaixo:")
-            dispatcher.utter_message(text=f"- Primeiro acesse o [SIGAA](https://sigaa.ifsc.edu.br) utilizando seu login e senha; Ao acessar o SIGAA, no menu superior, clique em \"Ensino\" e, em seguida, em \"{nome_documento}\".")
-            dispatcher.utter_message(text=f"- Então,  o seu {nome_documento} será aberto em uma nova janela. Você pode imprimi-lo ou salvá-lo através do botão “imprimir” no final da página.")
+            dispatcher.utter_message(text=f"Certo. Para emitir o seu {documento} a partir do SIGAA, siga os passos abaixo:")
+            dispatcher.utter_message(text=f"- Primeiro acesse o [SIGAA](https://sigaa.ifsc.edu.br) utilizando seu login e senha; Ao acessar o SIGAA, no menu superior, clique em \"Ensino\" e, em seguida, em \"{documento}\".")
+            dispatcher.utter_message(text=f"- Então,  o seu {documento} será aberto em uma nova janela. Você pode imprimi-lo ou salvá-lo através do botão “imprimir” no final da página.")
         else:
-            dispatcher.utter_message(text=f"Beleza. Para receber o seu {nome_documento} impresso com carimbo e assinatura, você deve ir à secretaria do IFSC Campus Gaspar pessoalmente. O horário de atendimento é de segunda a sexta-feira, das 7h às 23h30.")
+            dispatcher.utter_message(text=f"Beleza. Para receber o seu {documento} impresso com carimbo e assinatura, você deve ir à secretaria do IFSC Campus Gaspar pessoalmente. O horário de atendimento é de segunda a sexta-feira, das 7h às 23h30.")
 
-        return []
+        return [SlotSet("documento", None), SlotSet("tipo_documento", None)]
+
+class ValidateRequererDocumentoForm(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_requerer_documento_form"
+
+    def validate_documento(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        documento = slot_value.lower()
+        
+        if documento == "atestado_matricula":
+            return {"documento": "Atestado de matrícula"}
+        elif documento == "atestado_frequencia":
+            return {"documento": "Atestado de frequência"}
+        else:
+            dispatcher.utter_message(text=f"Desculpe, não consegui entender que tipo de documento você quer. Você poderia tentar de novo?")
+            return {"documento": None}
+    
+    async def required_slots(
+        self,
+        domain_slots: List[Text],
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> List[Text]:
+        additional_slots = ["tipo_documento"]
+        if tracker.slots.get("tipo_documento") == "digital":
+            additional_slots.append("possui_conta")
+
+        return additional_slots + domain_slots
+        
 
 class ActionEnviarChegadaTardia(Action):
 
