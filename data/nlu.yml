@@ -123,7 +123,6 @@ nlu:
     - [Química 1](turma)
     - [Química 3](turma)
     - [Química 6](turma)
-    
 - synonym: atestado_matricula
   examples: |
     - atestado de matricula

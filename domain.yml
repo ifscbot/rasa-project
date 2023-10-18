@@ -76,7 +76,7 @@ responses:
   utter_requerer_documento:
   - text: Posso ajudar com isso!
   utter_ask_documento:
-  - text: Qual documento você precisa? (Atestado de matrícula ou atestado de frequência)
+  - text: Qual documento você precisa? (atestado de matrícula ou atestado de frequência)
   utter_ask_tipo_documento:
   - text: Você pode obter seu documento digitalmente ou fisicamente. Qual você prefere?
   utter_ask_possui_conta:

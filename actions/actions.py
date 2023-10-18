@@ -22,7 +22,6 @@ from rasa_sdk.events import SlotSet
 from rasa_sdk.types import DomainDict
 
 class ActionProcessarHorarioCampus(Action):
-
     def name(self) -> Text:
         return "action_processar_horario_campus"
 
@@ -60,7 +59,6 @@ class ActionProcessarHorarioCampus(Action):
         return []
 
 class ActionEnviarRequererDocumento(Action):
-
     def name(self) -> Text:
         return "action_enviar_requerer_documento"
 
@@ -74,6 +72,14 @@ class ActionEnviarRequererDocumento(Action):
         tipo_documento = tracker.get_slot("tipo_documento")
         print("Tipo de documento: " + tipo_documento)
         
+        if documento == "atestado_matricula":
+            documento = "Atestado de matrícula"
+        elif documento == "atestado_frequencia":
+            documento = "Atestado de frequência"
+        else:
+            dispatcher.utter_message(text=f"Desculpe, não consegui entender que tipo de documento você quer. Você poderia tentar de novo?")
+            return
+        
         if tipo_documento == "digital":
             dispatcher.utter_message(text=f"Certo. Para emitir o seu {documento} a partir do SIGAA, siga os passos abaixo:")
             dispatcher.utter_message(text=f"- Primeiro acesse o [SIGAA](https://sigaa.ifsc.edu.br) utilizando seu login e senha; Ao acessar o SIGAA, no menu superior, clique em \"Ensino\" e, em seguida, em \"{documento}\".")
@@ -86,23 +92,6 @@ class ActionEnviarRequererDocumento(Action):
 class ValidateRequererDocumentoForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_requerer_documento_form"
-
-    def validate_documento(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: DomainDict,
-    ) -> Dict[Text, Any]:
-        documento = slot_value.lower()
-        
-        if documento == "atestado_matricula":
-            return {"documento": "Atestado de matrícula"}
-        elif documento == "atestado_frequencia":
-            return {"documento": "Atestado de frequência"}
-        else:
-            dispatcher.utter_message(text=f"Desculpe, não consegui entender que tipo de documento você quer. Você poderia tentar de novo?")
-            return {"documento": None}
     
     async def required_slots(
         self,
@@ -116,10 +105,8 @@ class ValidateRequererDocumentoForm(FormValidationAction):
             additional_slots.append("possui_conta")
 
         return additional_slots + domain_slots
-        
 
 class ActionEnviarChegadaTardia(Action):
-
     def name(self) -> Text:
         return "action_enviar_chegada_tardia"
 
