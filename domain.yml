@@ -92,7 +92,7 @@ responses:
   - text: "O que é um terapeuta?\n1.024 gigapeutas."
   - text: "int x=10; int y=10; return x+y; // Qual o nome do filme?\nO Código dá Vinte"
   - text: "O que um álcool disse para o outro?\nEtanóis! 👋"
-  - text: "Beleza. Vou contar uma piada sobre potássio.\n...\nKKKKKKKKKKKKK"
+  - text: "Beleza. Vou contar uma piada sobre potássio...\nKKKKKKKKKKKKK"
   - text: "Sabe o que um cromossomo falou para o outro?\nCromossomos felizes!"
   - text: "Um buraco negro é um tunel no fim da luz."
 
