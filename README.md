@@ -40,14 +40,22 @@ rasa shell
 rasa interactive
 ```
 
+Sempre que estiver conversando com o chatbot e precisar executar uma ação de script, certifique-se de [iniciar o servidor de ações](#rodar-o-chatbot).
+
 #### Customizando respostas
 
 Para customizar as respostas do chatbot, você deve editar o arquivo `domain.yml`. Caso queira implementar uma ação customizada em Python (que cheque algum tipo de serviço externo ou tenha uma lógica própria), adicione uma classe no arquivo `actions/actions.py`. Para mais informações, veja [este documento](https://rasa.com/docs/rasa/actions/).
 
-## Rodar o chatbot
+### Rodar o chatbot
 
 Para iniciar uma sessão do chatbot que o exponha para os serviços externos (definidos em `endpoints.yml`), você pode rodar o seguinte comando: 
 
 ```bash
 rasa run -m models --enable-api --cors "*" --debug -p 5005
+```
+
+No entanto, vale lembrar que as ações são servidas de uma maneira separada do servidor principal do chatbot. Portanto, você também deve rodar o servidor de ações da seguinte maneira.
+
+```bash
+rasa run actions
 ```
