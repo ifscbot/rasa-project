@@ -25,10 +25,29 @@ Este projeto abriga os arquivos de configuração e o código-fonte responsável
 
 Primeiro, abra o projeto em um editor de código fonte e edite os arquivos da maneira necessária. Certifique-se de que você tem o framework [Rasa Open Source](https://rasa.com/docs/rasa/installation/installing-rasa-open-source/) instalado e a versão correta do Python em sua máquina. Dentro do diretório do projeto, no Terminal, você pode executar o seguinte:
 
-1. **Treinar o modelo (`rasa train`):** Treine o modelo usando os dados de treinamento definidos em `data/`.
+**Para treinar o modelo usando os dados de treinamento definidos em `data/`** 
+```
+rasa train
+```
 
-2. ** Conversar com o modelo (`rasa shell`):** Inicie uma sessão simples de conversa para testar o comportamento do chatbot.
+**Para iniciar uma sessão simples de conversa para testar o comportamento do chatbot**
+```bash
+rasa shell
+```
 
-3. ** Interagir com o modelo (`rasa interactive`):** Inicie uma sessão interativa de conversa para testar de debugar o comportamento do chatbot.
+**Para iniciar uma sessão interativa de conversa para testar de debugar o comportamento do chatbot**
+```bash
+rasa interactive
+```
 
 #### Customizando respostas
+
+Para customizar as respostas do chatbot, você deve editar o arquivo `domain.yml`. Caso queira implementar uma ação customizada em Python (que cheque algum tipo de serviço externo ou tenha uma lógica própria), adicione uma classe no arquivo `actions/actions.py`. Para mais informações, veja [este documento](https://rasa.com/docs/rasa/actions/).
+
+## Rodar o chatbot
+
+Para iniciar uma sessão do chatbot que o exponha para os serviços externos (definidos em `endpoints.yml`), você pode rodar o seguinte comando: 
+
+```bash
+rasa run -m models --enable-api --cors "*" --debug -p 5005
+```
