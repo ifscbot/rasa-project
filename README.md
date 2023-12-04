@@ -2,6 +2,8 @@
 
 Este projeto abriga os arquivos de configuração e o código-fonte responsável por compilar o modelo do chatbot para o projeto RASA.
 
+Para ver o repositório da página web para interação com o chatbot, acesse o repositório [rasa-frontend](https://github.com/ifscbot/rasa-frontend).
+
 ### Estrutura de arquivos
 
 | **`/`**                  |                                                                                             |
